@@ -1,0 +1,26 @@
+{
+  "name": "apostrophe-graphql",
+  "version": "1.0.0",
+  "description": "Add GraphQL Api support",
+  "main": "index.js",
+  "scripts": {
+    "lint": "npm run eslint",
+    "eslint": "eslint .",
+    "test": "npm run lint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TuColegaDev/apostrophe-graphql.git"
+  },
+  "keywords": [
+    "graphql",
+    "apostrophe",
+    "javascript"
+  ],
+  "author": "RustLovers",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/TuColegaDev/apostrophe-graphql/issues"
+  },
+  "homepage": "https://github.com/TuColegaDev/apostrophe-graphql#readme"
+}
