@@ -14,9 +14,8 @@ module.exports = {
         const schema = self.apos.modules[name].schema;
         if (schema.length) {
           queries[`get${moduleName}s`] = (_, __, { req }) => {
-            return self.apos.modules[moduleName.toLowerCase()]
-              .find(self.apos.task.getReq(), {})
-              .toArray();
+            console.log(req);
+            return self.apos.modules[moduleName.toLowerCase()].find(self.apos.task.getReq(), {}).toArray();
           };
           resolvers[moduleName] = {};
         }
