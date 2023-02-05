@@ -49,7 +49,7 @@ function generateStaticResolvers(self) {
   }
 
   return {
-    ...queries,
-    ...resolvers
+    queries,
+    resolvers
   };
 }
