@@ -1,5 +1,5 @@
 const { ApolloServer } = require('@apollo/server');
-const { generateTypedefs } = require('./generateTypedefs.js');
+const { generateTypedefs } = require('./generateTypedefs');
 const { generateResolvers } = require('./generateResolvers');
 
 module.exports = {
@@ -15,15 +15,13 @@ module.exports = {
     await server.start();
     self.apos.modules.graphql.server = server;
   },
-  routes(self) {
+  restApiRoutes(self) {
     return {
-      post: {
-        // GET /api/v1/graphql/query
-        async query(req, res) {
-          const server = self.apos.modules.graphql.server;
-          const result = await server.executeOperation(req.body, { contextValue: { req } });
-          return res.send(result.body.singleResult.data);
-        }
+      // POST /api/v1/graphql
+      async post(req) {
+        const server = self.apos.modules.graphql.server;
+        const result = await server.executeOperation(req.body, { contextValue: { req } });
+        return result.body.singleResult.data;
       }
     };
   }
