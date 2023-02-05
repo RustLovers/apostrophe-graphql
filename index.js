@@ -6,7 +6,6 @@ module.exports = {
     modules: ["@apostrophe/graphql"],
   },
   init(self){
-    graphql(self)
-    console.log(self)
+    graphql.init(self)
   }
 };

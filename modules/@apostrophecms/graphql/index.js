@@ -10,6 +10,11 @@ module.exports = {
     const resolvers = generateResolvers(self);
 
     const server = new ApolloServer({
+      context: (req, res, next) => ({
+        req,
+        res,
+        next
+      }),
       typeDefs,
       resolvers
     });
