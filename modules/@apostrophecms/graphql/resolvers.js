@@ -1,5 +1,9 @@
-export default resolvers = {
+const resolvers = {
     Query: {
       books: () => [{ name: 'HOLA SOY UN LIBRO' }]
     }
   };
+
+module.exports = {
+    resolvers
+}

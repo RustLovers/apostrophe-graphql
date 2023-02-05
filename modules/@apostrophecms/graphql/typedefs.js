@@ -1,4 +1,4 @@
-export default typeDefs = `#graphql
+const typeDefs = `#graphql
     type Query {
         books: [Book]!
     }
@@ -7,3 +7,7 @@ export default typeDefs = `#graphql
         name: String
     }
 `;
+
+module.exports = {
+    typeDefs
+}
