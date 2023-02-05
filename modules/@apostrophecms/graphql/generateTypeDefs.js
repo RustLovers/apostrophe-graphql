@@ -9,7 +9,7 @@ module.exports = {
 
     for (const name of moduleNames) {
       const extend = modules[name].extend;
-      if ([extend, extend?.extend].includes('@apostrophecms/piece-type')) {
+      if ([ extend, extend?.extend ].includes('@apostrophecms/piece-type')) {
         const moduleName = snakeToPascal(name.replace('@apostrophecms/', ''));
         const schema = self.apos.modules[name].schema;
         if (schema.length) {
@@ -40,7 +40,10 @@ function generateStaticTypedefs(self) {
   for (const name of moduleNames) {
     const dbModule = modules[name].db;
     if (dbModule?.s?.namespace) {
-      const collectionName = dbModule.s.namespace.collection.replace('apos', '');
+      const collectionName = dbModule.s.namespace.collection.replace(
+        'apos',
+        ''
+      );
 
       types += `type ${collectionName} {\n
           name: String\n
