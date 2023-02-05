@@ -1,7 +1,12 @@
 {
-    "extends": [ "apostrophe", "plugin:vue/recommended" ],
+    "extends": [
+        "apostrophe"
+    ],
     "globals": {
-      "apos": true
+        "apos": true
+    },
+    "rules": {
+        "no-var": "error",
+        "no-console": 0
     }
-  }
-  
+}

@@ -1,7 +1,7 @@
-const graphql = require("./modules/@apostrophecms/graphql");
+const graphql = require('./modules/@apostrophecms/graphql');
 
 module.exports = {
-  init(self){
-    graphql.start(self)
+  init(self) {
+    graphql.start(self);
   }
 };

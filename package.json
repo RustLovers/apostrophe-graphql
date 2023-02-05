@@ -25,5 +25,10 @@
   "homepage": "https://github.com/TuColegaDev/apostrophe-graphql#readme",
   "dependencies": {
     "@apollo/server": "^4.3.2"
+  },
+  "devDependencies": {
+    "eslint": "^7.16.0",
+    "eslint-config-apostrophe": "^3.4.0",
+    "eslint-plugin-node": "^11.1.0"
   }
 }
