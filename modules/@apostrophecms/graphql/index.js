@@ -1,11 +1,9 @@
 const { ApolloServer } = require('@apollo/server');
-const { expressMiddleware } = require('@apollo/server/express4');
-const { json } = require('body-parser');
-const { generateTypedefs } = require('./generateTypedefs');
+const { generateTypedefs } = require('./generateTypedefs.js');
 const { generateResolvers } = require('./generateResolvers');
 
 module.exports = {
-  async start(self) {
+  async init(self) {
     const typeDefs = generateTypedefs(self);
     const resolvers = generateResolvers(self);
 
@@ -15,13 +13,18 @@ module.exports = {
     });
 
     await server.start();
-
-    self.apos.app.use(
-      '/api/v1/graphql',
-      json(),
-      expressMiddleware(server, {
-        context: (req) => ({ req })
-      })
-    );
+    self.apos.modules.graphql.server = server;
+  },
+  routes(self) {
+    return {
+      post: {
+        // GET /api/v1/graphql/query
+        async query(req, res) {
+          const server = self.apos.modules.graphql.server;
+          const result = await server.executeOperation(req.body, { contextValue: { req } });
+          return res.send(result.body.singleResult.data);
+        }
+      }
+    };
   }
 };
