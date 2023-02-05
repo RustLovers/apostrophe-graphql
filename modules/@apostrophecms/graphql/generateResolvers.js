@@ -4,15 +4,19 @@ module.exports = {
   generateResolvers: (self) => {
     const modules = self.apos.synth.definitions;
     const moduleNames = Object.keys(modules);
+
     let { queries, resolvers } = generateStaticResolvers(self)
-    
+
     for (const name of moduleNames) {
       const extend = modules[name].extend;
       if ([extend?.extend, extend].includes('@apostrophecms/piece-type')) {
         const moduleName = snakeToPascal(name.replace('@apostrophecms/', ''));
         const schema = self.apos.modules[name].schema;
         if (schema.length) {
-          queries[`get${moduleName}s`] = (_, __, { req }) => self.apos.modules[moduleName.toLowerCase()].find(self.apos.task.getReq(), {}).toArray();
+          queries[`get${moduleName}s`] = (_, __, { req }) => {
+            console.log(req);
+            return self.apos.modules[moduleName.toLowerCase()].find(self.apos.task.getReq(), {}).toArray();
+          };
           resolvers[moduleName] = {};
         }
       }
@@ -42,7 +46,7 @@ function generateStaticResolvers(self) {
     }
   
     return {
-      queries, 
-      resolvers
+      ...queries, 
+      ...resolvers
     };
   }

@@ -5,7 +5,7 @@ const { generateTypedefs } = require('./generateTypedefs');
 const { generateResolvers } = require('./generateResolvers');
 
 module.exports = {
-  async start(self) {
+  async init(self) {
     const typeDefs = generateTypedefs(self);
     const resolvers = generateResolvers(self);
 
