@@ -1,4 +1,4 @@
-const typeDefs = `#graphql
+module.exports = typeDefs = `#graphql
     type Query {
         books: [Book]!
     }
@@ -7,7 +7,3 @@ const typeDefs = `#graphql
         name: String
     }
 `;
-
-module.exports = {
-    typeDefs
-}
