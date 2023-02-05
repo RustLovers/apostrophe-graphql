@@ -22,7 +22,7 @@ This module bundle helps developers quickly setup a full GraphQL server.
 To install the module, use the command line to run this command in an Apostrophe project's root directory:
 
 ```
-npm install @apostrophecms/blog
+npm i --save https://github.com/TuColegaDev/apostrophe-graphql
 ```
 
 ## Usage
